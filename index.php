@@ -53,7 +53,7 @@
                while ($row = mysqli_fetch_array($query)) {
                   echo
                   "<tr>
-                  <td>{$row['GenreName']}</td>
+                  <td>{$row['genre_name']}</td>
                   <td>{$row['DateofOrigin']}</td>
                   <td>{$row['PlacesofOrigin']}</td>
                   <td>{$row['NotableBands']}</td>
