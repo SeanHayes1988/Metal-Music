@@ -1,9 +1,9 @@
 DROP TABLE IF EXISTS genres;
 
 CREATE TABLE genres (
-  genre_name varchar(30) NOT NULL,
-  DateofOrigin varchar(30) NULL,
-  PlacesofOrigin varchar(50) NULL,
+  genre_name char(50) NOT NULL,
+  DateofOrigin char(30) NULL,
+  PlacesofOrigin char(100) NULL,
   NotableBands varchar(1000) NOT NULL,
   Comments varchar(1000) NULL,
   PRIMARY KEY (genre_name)
@@ -17,7 +17,7 @@ CREATE TABLE genres (
 
 LOCK TABLES genres WRITE;
 /*!40000 ALTER TABLE 'genres' DISABLE KEYS */;
-INSERT INTO genres VALUES (1,'Heavy Metal ','13 February 1970','Birmingham England UK','Black Sabbath, Motörhead, Judas Priest','Some consider Led Zeppelin and Deep Purple the orginal Heavy Metal Bands');
+INSERT INTO genres VALUES ('Heavy Metal ','13 February 1970','Birmingham England UK','Black Sabbath, Motörhead, Judas Priest','Some consider Led Zeppelin and Deep Purple the orginal Heavy Metal Bands');
 /*!40000 ALTER TABLE 'genres' ENABLE KEYS */;
 UNLOCK TABLES;
 
