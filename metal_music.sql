@@ -4,8 +4,8 @@ CREATE TABLE genres (
   genre_name char(50) NOT NULL,
   date_of_origin char(30) NULL,
   places_of_origin char(100) NULL,
-  notable_bands char(1000) NOT NULL,
-  comments char(1000) NULL,
+  notable_bands varchar(1000) NOT NULL,
+  comments varchar(1000) NULL,
   PRIMARY KEY (genre_name)
 );
 /* ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;*/
