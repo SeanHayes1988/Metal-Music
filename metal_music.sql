@@ -2,10 +2,10 @@ DROP TABLE IF EXISTS genres;
 
 CREATE TABLE genres (
   genre_name char(50) NOT NULL,
-  DateofOrigin char(30) NULL,
-  PlacesofOrigin char(100) NULL,
-  NotableBands varchar(1000) NOT NULL,
-  Comments varchar(1000) NULL,
+  date_of_origin char(30) NULL,
+  places_of_origin char(100) NULL,
+  notable_bands char(1000) NOT NULL,
+  comments char(1000) NULL,
   PRIMARY KEY (genre_name)
 );
 /* ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;*/

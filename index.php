@@ -54,10 +54,10 @@
                   echo
                   "<tr>
                   <td>{$row['genre_name']}</td>
-                  <td>{$row['DateofOrigin']}</td>
-                  <td>{$row['PlacesofOrigin']}</td>
-                  <td>{$row['NotableBands']}</td>
-                  <td>{$row['Comments']}</td>
+                  <td>{$row['date_of_origin']}</td>
+                  <td>{$row['places_of_origin']}</td>
+                  <td>{$row['notable_bands']}</td>
+                  <td>{$row['comments']}</td>
                   </tr\n>";
                }
 
