@@ -47,7 +47,7 @@
          $query = mysqli_query($conn, "SELECT * FROM genres")
             or die (mysqli_error( $conn));
 
-             echo'<a href="test.html"><b> HOME</b> </a>';
+             echo'<a href="genres.html"><b> HOME</b> </a>';
 
 
                while ($row = mysqli_fetch_array($query)) {

@@ -4,7 +4,7 @@ CREATE TABLE genres (
   genre_name char(50) NOT NULL,
   date_of_origin char(30) NULL,
   places_of_origin char(255) NULL,
-  notable_bands varchar(1000) NOT NULL,
+  notable_bands varchar(1000) NULL,
   comments varchar(1000) NULL,
   PRIMARY KEY (genre_name)
 );
