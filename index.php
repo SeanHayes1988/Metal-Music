@@ -21,8 +21,8 @@
          $dbhost = 'localhost';
          $dbuser = 'sean';
          $dbpass = 'metalislife';
-         $db = "metal_music";
-         $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$db);
+         $db     = "metal_music";
+         $conn   = mysqli_connect($dbhost, $dbuser, $dbpass,$db);
       
          if(! $conn ) {
             die('Could not connect: ' . mysqli_error());
@@ -37,9 +37,6 @@
          <tr>
          <td>Genre Name</td>
          <td>Date of Origin</td>
-         <td>Place(s) of Origin</td>
-         <td>Notable Bands</td>
-         <td>Comments</td>
          </tr>
 
         <?php
@@ -55,9 +52,6 @@
                   "<tr>
                   <td>{$row['genre_name']}</td>
                   <td>{$row['date_of_origin']}</td>
-                  <td>{$row['places_of_origin']}</td>
-                  <td>{$row['notable_bands']}</td>
-                  <td>{$row['comments']}</td>
                   </tr\n>";
                }
 

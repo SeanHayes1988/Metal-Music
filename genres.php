@@ -2,7 +2,7 @@
          $dbhost = 'localhost';
          $dbuser = 'sean';
          $dbpass = 'metalislife';
-         $db = "metal_music";
+         $db     = "metal_music";
 
          $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$db);
       
@@ -15,12 +15,10 @@
          {
           $genre_name       =    $_POST['genre_name'];
           $date_of_origin   =    $_POST['date_of_origin'];
-          $places_of_origin =    $_POST['places_of_origin'];
-          $notable_bands    =    $_POST['notable_bands'];
-          $comments         =    $_POST['comments'];
+
      
-          $query = "INSERT INTO genres (genre_name, date_of_origin, places_of_origin, notable_bands, comments) 
-          VALUES ('$genre_name', '$date_of_origin', '$places_of_origin', '$notable_bands', '$comments')";
+          $query = "INSERT INTO genres (genre_name, date_of_origin)
+                     VALUES ('$genre_name', '$date_of_origin')";
         }
 
          if (!mysqli_query($conn, $query)) 

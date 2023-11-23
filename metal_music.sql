@@ -2,12 +2,13 @@ DROP TABLE IF EXISTS genres;
 
 CREATE TABLE genres (
   genre_name char(50) NOT NULL,
-  date_of_origin char(30) NULL,
-  places_of_origin char(255) NULL,
-  notable_bands varchar(1000) NULL,
-  comments varchar(1000) NULL,
+  date_of_origin char(30) NOT NULL,
   PRIMARY KEY (genre_name)
-);
+  );
+/*  places_of_origin char(255) NULL,
+  notable_bands varchar(1000) NULL,
+  comments varchar(1000) NULL,*/
+
 /* ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;*/
 /*!40101 SET character_set_client = @saved_cs_client */;
 
