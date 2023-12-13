@@ -1,62 +1,85 @@
+  <?php
+  // Include script to make a database connection
+     include("connect.php");
+     include("menuBar.html");
+     include("deleteGenre.php");
 
-<html>
+     # Button click to Delete
+# Check that the input fields are not empty and process the data
+/*if(!empty($_POST['delete']) && !empty($_POST['genre_name'])){
+    $query3 = "DELETE FROM  genres WHERE genre_name='".$_POST['genre_name']."' ";
+    if (mysqli_query($conn, $query3)) {
+        echo "Record deleted successfully !";
+    } else {
+        # Display an error message if unable to delete the record
+       echo "Error deleting record: " . $conn->error;
+    }
+}*/
+
+?>
+   
+
+<!DOCTYPE html>
+<html lang ="en">
    <head>
-      <title>Connect to MariaDB Server</title>
-        <link rel="stylesheet" type="text/css" href="border.css" />
-      
+      <meta charset='utf-8'>
+      <meta name='description' content='Rock and Metal Music Encyclopedia'>
+      <meta name='keywords' content='Rock and Metal Music'>
+      <meta name='author'  content='Know Your Metal - Sean Hayes '>
+      <meta name='robots' content='all'>
+
+      <title>Welcome to Know Your Metal \m/ </title>
+        <link rel="stylesheet" type="text/css" href="border.css"/>
    </head>
-
    <body>
-      <?php
-
-      /*if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
-      $uri = 'https://';
-   } else {
-      $uri = 'http://';
-   }
-   $uri .= $_SERVER['HTTP_HOST'];
-   header('Location: '.$uri.'/dashboard/');
-   exit;*/
-
-         $dbhost = 'localhost';
-         $dbuser = 'sean';
-         $dbpass = 'metalislife';
-         $db     = "metal_music";
-         $conn   = mysqli_connect($dbhost, $dbuser, $dbpass,$db);
       
-         if(! $conn ) {
-            die('Could not connect: ' . mysqli_error());
-         }
-         
-         //echo 'Connected successfully';
-      ?>
-
-     
-
-         <table border="" align="center">
-         <tr>
-         <td>Genre Name</td>
-         <td>Date of Origin</td>
-         </tr>
-
         <?php
+         /*echo'<a href="index.php"><b> Home</b> </a>';
+         echo'<a href="createGenre.php"><b> Create Genre </b> </a>';*/
+         
+         $query = "SELECT * FROM genres";
+         $result = $conn->query($query);
 
-         $query = mysqli_query($conn, "SELECT * FROM genres")
-            or die (mysqli_error( $conn));
+         if ($result->num_rows > 0) {
+            echo "<table border='1'>
+              <thead>
+                <tr>
+                <th>Genre Name</th>
+                <th>Date Of Origin</th>
+                <th>Places of Origin</th>
+                <th>Notable Bands</th>
+                <th>Comments</th>
+                <th>Edit Genre</th>
+                <th>Delete Genre</th>
+                </tr>
+              </thead>
+              ";
+    while($row = $result->fetch_assoc()) {
+       echo "<tr",">",
+            "<td>", $row["genre_name"],"</td>",
+            "<td>", $row["date_of_origin"],"</td>",
+            "<td>", $row["place_of_origin"],"</td>",
+            "<td>", $row["notable_bands"],"</td>",
+            "<td>", $row["comments"],"</td>",
 
-             echo'<a href="genres.html"><b> HOME</b> </a>';
-
-
-               while ($row = mysqli_fetch_array($query)) {
-                  echo
-                  "<tr>
-                  <td>{$row['genre_name']}</td>
-                  <td>{$row['date_of_origin']}</td>
-                  </tr\n>";
-               }
-
-         mysqli_close($conn);
-
+            "<td>",
+                "<form action='editGenres.php' method='post'>
+                 <input name='genre_name' value='",$row["genre_name"],"' hidden >
+                 <button type='submit' name='update' value='update'>Edit</button>
+                </form>",
+            "</td>",
+            "<td>",
+                "<form action='index.php' method='post'>
+                 <input name='genre_name' value='",$row["genre_name"],"' hidden >
+                 <button type='submit' name='delete' value='delete'>Delete</button>
+                </form>",
+            "</td>",
+            "</tr>";
+    }
+    echo  "</table>";
+}else {
+ echo "No Genre's were Found!!!";
+}
       ?>
    </body>
 </html>
