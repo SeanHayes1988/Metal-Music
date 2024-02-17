@@ -3,11 +3,11 @@
 include("database.php");
 include("menuBar.html");
 
-#check connection to server
+#check connection to server and check if the fields are empty 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if(empty($_POST['genre_name']) && empty($_POST['year']) && empty($_POST['month']) && empty($_POST['place_of_origin']) && empty($_POST['notable_bands']) && empty($_POST['comments'])){
     # If the fields are empty, display a message to the user
-    echo "Please fill in the fields";
+    #echo "Please fill in the fields";
 
 # Process the form data if the input fields are not empty
 }else{
@@ -40,6 +40,7 @@ if (mysqli_query($conn, $query)) {
     <link rel="stylesheet"  type="text/css" href="style1.css">
 
  <script>
+    //confirmation box 
         function validateForm() {
             return confirm('Click Ok To Confirm Genre and Metal Up Your Ass!!!');
         }   
