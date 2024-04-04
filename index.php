@@ -1,6 +1,6 @@
   <?php
   // Include script to make a database connection
-     include("connect.php");
+     include("database.php");
      include("menuBar.html");
      include("deleteGenre.php");
 
