@@ -43,13 +43,63 @@ if (mysqli_query($conn, $query)) {
     //confirmation box 
         function validateForm() {
             return confirm('Click Ok To Confirm Genre and Metal Up Your Ass!!!');
-        }   
-    
+        }
+
 </script>
+
+<style> 
+        .tags-input { 
+            display: inline-block; 
+            position: relative; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            padding: 5px; 
+            box-shadow: 2px 2px 5px #00000033; 
+            width: 50%; 
+        } 
+
+        .tags-input ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+        } 
+
+        .tags-input li { 
+            display: inline-block; 
+            background-color: #f2f2f2; 
+            color: #333; 
+            border-radius: 20px; 
+            padding: 5px 10px; 
+            margin-right: 5px; 
+            margin-bottom: 5px; 
+        } 
+
+        .tags-input input[type="text"] { 
+            border: none; 
+            outline: none; 
+            padding: 5px; 
+            font-size: 14px; 
+        } 
+
+        .tags-input input[type="text"]:focus { 
+            outline: none; 
+        } 
+
+        .tags-input .delete-button { 
+            background-color: transparent; 
+            border: none; 
+            color: #999; 
+            cursor: pointer; 
+            margin-left: 5px; 
+        } 
+    </style>
+
+
+
 </head>
 <body>
     <h1>Create Genres </h1>
-     <form name="createGenre" id="createGenre" method="post" action="createGenre.php" >
+    <form name="createGenre" id="createGenre" method="post" action="createGenre.php" >
 
         <label for="genre_name" class="required"> Genre Name: </label> 
         <input type="text" name="genre_name" id="genre_name" required><br><br>
@@ -163,17 +213,19 @@ if (mysqli_query($conn, $query)) {
         </select><br><br>
 
         <label for="place_of_origin" class="required">Place(s) Of Origin: </label>
-        <input type="text" name="place_of_origin" id="place_of_origin" required><br><br>
-
+         <textarea type="text" name="place_of_origin" id="input-tag" required></textarea><br><br>
+ 
         <label for="notable_band"s class="required">Notable Bands: </label>
-        <input type="text" name="notable_bands" id="notable_bands" required><br><br>
+        <textarea name="notable_bands" id="notable_bands" required></textarea><br><br>
 
         Comments:
         <textarea name="comments" id="comments"></textarea><br><br>
 
         <input type="submit" name="save" value="submit" onclick="return validateForm()" > 
         <p><span class="required">Required Field</span></p>
-    </form>
+    </form> 
+
+
 
 </body>
 </html>
