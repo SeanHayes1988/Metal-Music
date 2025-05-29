@@ -46,6 +46,7 @@
                 <tr>
                 <th>Genre Name</th>
                 <th>Date Of Origin</th>
+                <th>Date Of Origin</th>
                 <th>Places of Origin</th>
                 <th>Notable Bands</th>
                 <th>Comments</th>
@@ -57,7 +58,8 @@
     while($row = $result->fetch_assoc()) {
        echo "<tr",">",
             "<td>", $row["genre_name"],"</td>",
-            "<td>", $row["date_of_origin"],"</td>",
+            "<td>", $row["monthV"],"</td>",
+            "<td>", $row["yearV"],"</td>",
             "<td>", $row["place_of_origin"],"</td>",
             "<td>", $row["notable_bands"],"</td>",
             "<td>", $row["comments"],"</td>",

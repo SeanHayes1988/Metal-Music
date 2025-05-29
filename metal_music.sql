@@ -1,10 +1,21 @@
 DROP TABLE IF EXISTS genres;
 
 CREATE TABLE genres (
-  genre_name char(50) NOT NULL,
-  date_of_origin char(30) NOT NULL,
+  genre_name varchar(50) NOT NULL,
+  monthV varchar(9) NULL,
+  yearV int(4) NOT NULL,
+  place_of_origin text NOT NULL,
+  notable_bands text NOT NULL,
+  comments varchar(1000) NULL,
   PRIMARY KEY (genre_name)
   );
+
+CREATE TABLE placeOfOrigin (
+  p_of_oID int NOT NULL AUTO_INCREMENT,
+  places_of_origin char(255) NULL,
+  PRIMARY KEY (p_of_oID)
+  );
+
 /*  places_of_origin char(255) NULL,
   notable_bands varchar(1000) NULL,
   comments varchar(1000) NULL,*/
