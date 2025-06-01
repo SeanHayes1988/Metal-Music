@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS genres;
 
 CREATE TABLE genres (
   genre_name varchar(50) NOT NULL,
-  monthV varchar(9) NULL,
+  monthV varchar(13) NULL,
   yearV int(4) NOT NULL,
   place_of_origin text NOT NULL,
   notable_bands text NOT NULL,

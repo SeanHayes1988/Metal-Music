@@ -7,7 +7,7 @@ if (!empty($_GET['genre_name']) || !empty($_GET['monthV']) || !empty($_GET['year
 
 $genre_name      = $_GET['genre_name'];
 $monthV           = $_GET['monthV'];
-$yearV           = $_GET['year'];
+$yearV           = $_GET['yearV'];
 $place_of_origin = $_GET['place_of_origin'];
 $place_of_origin = implode(', ', $place_of_origin);
 $notable_bands   = $_GET["notable_bands"];
@@ -15,7 +15,7 @@ $notable_bands   = implode(', ', $notable_bands);
 $comments        = $_GET["comments"];
 
 # Insert into the database
-$query = "INSERT INTO genres (genre_name,monthV,year,place_of_origin,notable_bands,comments) VALUES ('$genre_name','$monthV','$year','$place_of_origin','$notable_bands','$comments')";
+$query = "INSERT INTO genres (genre_name,monthV,yearV,place_of_origin,notable_bands,comments) VALUES ('$genre_name','$monthV','$yearV','$place_of_origin','$notable_bands','$comments')";
 if (mysqli_query($conn, $query)) {
     echo "New record created successfully !";
     } else {
@@ -36,23 +36,22 @@ if (mysqli_query($conn, $query)) {
     <h1>Create Genres </h1>
         <form name="createGenre" method="get" action="createGenre.php" onsubmit="return validateForm()" required>
             Name: <input type="text" name="genre_name"><br><br/>
-            Date Of Origin: <input type="text" name="monthV"><br/><br/>
             <label for="monthV" class="required">   Month of Origin: </label>
         <select class="form-select" id="monthV" name="monthV" required>
             <option value="">month</option>
-            <option value="00">Not Specified</option>
-            <option value="01">January</option>
-            <option value="02">February</option>
-            <option value="03">March</option>
-            <option value="04">April</option>
-            <option value="05">May</option>
-            <option value="06">June</option>
-            <option value="07">July</option>
-            <option value="08">August</option>
-            <option value="09">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
+            <option value="Not Specified">Not Specified</option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
         </select><br><br>
 
         <label for="yearV" class="required"> Year of Origin: </label>
