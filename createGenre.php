@@ -5,17 +5,17 @@ include("menuBar.html");
 
 if (!empty($_GET['genre_name']) || !empty($_GET['monthV']) || !empty($_GET['year']) || !empty($_GET['place_of_origin']) || !empty($_GET["notable_bands"]) || !empty($_GET["comments"])){
 
-$genre_name      = $_GET['genre_name'];
-$monthV           = $_GET['monthV'];
-$yearV           = $_GET['yearV'];
-$place_of_origin = $_GET['place_of_origin'];
-$place_of_origin = implode(', ', $place_of_origin);
-$notable_bands   = $_GET["notable_bands"];
-$notable_bands   = implode(', ', $notable_bands);
-$comments        = $_GET["comments"];
+$genre_name         = $_GET['genre_name'];
+$monthV             = $_GET['monthV'];
+$yearV              = $_GET['yearV'];
+$place_of_origin    = $_GET['place_of_origin'];
+$place_of_origins   = implode(', ', $place_of_origin);
+$notable_band       = $_GET['notable_bands'];
+$notable_bands      = implode(', ', $notable_band);
+$comments           = $_GET["comments"];
 
 # Insert into the database
-$query = "INSERT INTO genres (genre_name,monthV,yearV,place_of_origin,notable_bands,comments) VALUES ('$genre_name','$monthV','$yearV','$place_of_origin','$notable_bands','$comments')";
+$query = "INSERT INTO genres (genre_name,monthV,yearV,place_of_origin,notable_bands,comments) VALUES ('$genre_name','$monthV','$yearV','$place_of_origins','$notable_bands','$comments')";
 if (mysqli_query($conn, $query)) {
     echo "New record created successfully !";
     } else {
@@ -146,7 +146,7 @@ if (mysqli_query($conn, $query)) {
         </select>
         <br/>  <br/>
 
-            <label>Place of Origin</label> <button type="button"  onclick="addEntry();"> Add Another Location </button>
+       <label>Place of Origin</label> <button type="button"  onclick="addEntry();"> Add Another Location </button>
             <br/> <br/>
             <div id="place_of_origin">
                 <div class="form-group">
@@ -156,16 +156,37 @@ if (mysqli_query($conn, $query)) {
             <br/>
 
 
-            <label>Notable Bands</label> <button type="button"  onclick="addEntry2();"> Add Another Band </button>
+             <label>Notable Bands</label> <button type="button"  onclick="addFn();"> Add Another Band </button>
             <br/> <br/>
-            <div id="notable_band">
-                <div class="form-group2">
-                    <input type="text" name="notable_bands[]" placeholder="Enter here..." class="form-control2" required="required"/>
+            <div id="notable_bands">
+                <div class="form-group">
+                    <input type="text" name="notable_bands[]" placeholder="Enter here..." class="form-control" required="required"/>
                 </div>
             </div>
+
+        
+    </div>
+    <script>
+        function addFn() {
+          var entry="<input type='text' name='notable_bands[]' placeholder='Enter here...' class='form-control' required='required'/>";
+            var element=document.createElement("div");
+            element.setAttribute('class', 'form-group');
+            element.innerHTML=entry;
+            document.getElementById('notable_bands').appendChild(element);
+        }
+
+        function addEntry(){
+            var entry="<input type='text' name='place_of_origin[]' placeholder='Enter here...' class='form-control' required='required'/>";
+            var element=document.createElement("div");
+            element.setAttribute('class', 'form-group');
+            element.innerHTML=entry;
+            document.getElementById('place_of_origin').appendChild(element);
+    }
+    </script>
+
+
             Comments: <textarea name="comments"></textarea><br><br/>
             <input type="submit" name="save" value="submit" >
         </form>
-        <script src="script.js"></script>
     </body>
 </html>

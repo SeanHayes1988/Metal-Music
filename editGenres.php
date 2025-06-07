@@ -4,7 +4,8 @@ include("database.php");
 include("menuBar.html");
 # Empty string to be used later
 $genre_name='';
-$date_of_origin='';
+$monthV='';
+$yearV='';
 $place_of_origin='';
 $notable_bands='';
 $comments='';
@@ -18,13 +19,14 @@ if(!empty($_POST['update']) && !empty($_POST['genre_name']) )  {
   if ($result->num_rows > 0) {
     # Output data for each row
     while($row = $result->fetch_assoc()) {
-      $genre_name=$row["genre_name"];
-      $date_of_origin=$row["date_of_origin"];
+      $genre_name =$row["genre_name"];
+      $monthV=$row["monthV"];
+      $yearV=$row["yearV"];
       $place_of_origin=$row["place_of_origin"];
       $notable_bands = $row["notable_bands"];
       $comments= $row["comments"];
     }
-    echo "Current Details: " ."<b> - Genre Name:</b> " . $genre_name. " <b>Date Of Origin:</b>" . $date_of_origin. "<b>Place Of Origin:</b>" . $place_of_origin. " 
+    echo "Current Details: " ."<b> - Month Of Origin:</b> " . $monthV. " <b>Year of Origin:</b>" . $yearV. "<b>Place Of Origin:</b>" . $place_of_origin. " 
     <b> Notable Bands:</b>" . $notable_bands . "<b> Comments</b>". $comments. "<br>";
   } else {
     echo "Error updating";
@@ -32,10 +34,9 @@ if(!empty($_POST['update']) && !empty($_POST['genre_name']) )  {
 }
 
 # Check that the input fields are not empty and process the data
-if(!empty($_POST['genre_name']) && !empty($_POST['date_of_origin']) && !empty($_POST['place_of_origin']) ){
+if(!empty($_POST['genre_name']) && !empty($_POST['monthV']) && !empty($_POST['place_of_origin']) ){
     # Insert into the database
-  $query = "UPDATE genres SET date_of_origin='".$_POST['date_of_origin']."', place_of_origin='".$_POST['place_of_origin']."', notable_bands='".$_POST['notable_bands']."',
-            comments='".$_POST['comments']."' WHERE genre_name='".$_POST['genre_name']."' ";
+  $query = "UPDATE genres  SET monthV ='$momthV' WHERE genre_name='".$_POST['genre_name']."' ";
   if (mysqli_query($conn, $query)) {
       echo "Record updated successfully!<br/>";
       echo '<a href="homeG.php">Get Form</a><br/>
@@ -57,12 +58,15 @@ if(!empty($_POST['genre_name']) && !empty($_POST['date_of_origin']) && !empty($_
     <h1>Form</h1>
     <p>Edit the record</p>
     <form method="POST" action="editGenres.php">
-        Genre Name: <input type="text" name="genre_name" value="<?php echo($genre_name); ?>" required><br><br/>
-        Date of Origin: <input type="text" name="date_of_origin" value="<?php echo($date_of_origin); ?>" required><br/>
-        Place(s) of Origin: <input type="text" name="place_of_origin" value="<?php echo($place_of_origin); ?>" required><br><br/>
-        Notable Bands: <input type="text" name="notable_bands" value="<?php echo($notable_bands); ?>" required><br><br/>
-        Comments: <textarea name="comments" value="<?php echo($comments); ?>" required></textarea><br><br/>
-        <br/>
+      <input type="hidden" name="genre_name" value="<?php echo $genre_name ?>">
+        Month of Origin: <input type="text" name="monthV" value="<?php echo($monthV); ?>"><br><br/>
+        Year of Origin: <input type="text" name="yearV" value="<?php echo($yearV); ?>"><br/>
+
+        <!--
+        Place(s) of Origin:<textarea rows='5' cols='20' name='place_of_origin' wrap='physical'>  <?php echo($place_of_origin);?></textarea>
+        Notable Bands <textarea rows='5' cols='20' name='notable_bands' wrap='physical'>  <?php echo($notable_bands);?></textarea>
+        Comments <textarea rows='5' cols='20' name='comments' wrap='physical'>  <?php echo($comments);?></textarea>
+        <br/>-->
         <input type="submit" value="update">
     </form>
 </body>
